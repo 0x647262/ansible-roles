@@ -1,0 +1,8 @@
+---
+- name: Install AMD Microcode
+  pacman:
+    name: amd-ucode
+    state: present
+  tags:
+    - amd
+    - microcode

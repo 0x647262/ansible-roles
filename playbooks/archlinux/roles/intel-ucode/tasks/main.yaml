@@ -1,0 +1,8 @@
+---
+- name: Install Intel Microcode
+  pacman:
+    name: intel-ucode
+    state: present
+  tags:
+    - intel
+    - microcode
