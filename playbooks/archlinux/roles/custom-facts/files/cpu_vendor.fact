@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+readonly CPU_VENDOR=$(
+  grep vendor /proc/cpuinfo \
+    | uniq                  \
+    | awk '{print $3}'
+)
+
+echo "\"$CPU_VENDOR"\"

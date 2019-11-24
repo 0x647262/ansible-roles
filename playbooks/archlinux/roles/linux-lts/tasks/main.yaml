@@ -1,0 +1,4 @@
+- name: Install linux-lts kernel
+  pacman:
+    name: linux-lts
+    state: present

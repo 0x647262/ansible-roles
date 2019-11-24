@@ -1,0 +1,4 @@
+- name: Install wireguard-tools
+  pacman:
+    name: wireguard-tools
+    state: present

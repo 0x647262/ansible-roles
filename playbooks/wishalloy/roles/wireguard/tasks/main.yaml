@@ -1,0 +1,4 @@
+- name: Install wireguard metapackage
+  apt:
+    name: wireguard
+    state: present

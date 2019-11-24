@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+readonly GPU=$(
+  lspci        \
+    | grep VGA \
+    | cut -d " " -f 2-
+)
+
+echo "\"$GPU\""

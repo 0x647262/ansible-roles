@@ -1,0 +1,9 @@
+- hosts: wishalloy.com
+  tasks:
+    - name: Upgrade packages
+      apt:
+        name: "*"
+        state: latest
+      become: yes
+
+# vim: et sw=2 ts=2

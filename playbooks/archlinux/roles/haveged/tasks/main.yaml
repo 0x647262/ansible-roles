@@ -1,0 +1,16 @@
+- name: Install haveged
+  pacman:
+    name: haveged
+    state: present
+
+- name: Enable haveged service
+  service:
+    name: haveged
+    enabled: yes
+
+- name: Start haveged service
+  service:
+    name: haveged
+    state: started
+
+# vim: et sw=2 ts=2:

@@ -1,0 +1,17 @@
+- import_playbook: core.yaml
+
+- hosts: localhost
+  connection: local
+  become: yes
+  roles:
+    - role: code
+      tags:
+        - text editors
+    - role: chromium
+      tags:
+        - internet browsers
+    - role: firefox
+      tags:
+        - internet browsers
+
+# vim: et sw=2 ts=2

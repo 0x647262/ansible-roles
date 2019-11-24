@@ -1,0 +1,15 @@
+- name: Create custom fact directory
+  file:
+    path: "/tmp/facts.d"
+    mode: '0755'
+    state: directory
+
+- name: Deploy custom facts
+  copy:
+    src: "{{ item }}"
+    dest: "/tmp/facts.d/"
+    mode: '0755'
+  with_fileglob:
+    - "*.fact"
+
+# vim: et sw=2 ts=2:

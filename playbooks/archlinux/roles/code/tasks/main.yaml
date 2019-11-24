@@ -1,0 +1,4 @@
+- name: Install Code
+  pacman:
+    name: code
+    state: present

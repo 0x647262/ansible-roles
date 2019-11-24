@@ -1,0 +1,4 @@
+- name: Install wireguard-lts kernel module
+  pacman:
+    name: wireguard-lts
+    state: present

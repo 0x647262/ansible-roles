@@ -1,0 +1,7 @@
+- name: Install pkgstats
+  pacman:
+    name: pkgstats
+    state: present
+
+# TODO: Configure service
+# TODO: Enable service

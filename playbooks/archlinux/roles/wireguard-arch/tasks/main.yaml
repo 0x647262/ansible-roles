@@ -1,0 +1,4 @@
+- name: Install wireguard-arch kernel module
+  pacman:
+    name: wireguard-arch
+    state: present
