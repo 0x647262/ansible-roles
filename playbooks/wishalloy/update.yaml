@@ -1,9 +1,83 @@
 - hosts: wishalloy.com
   tasks:
-    - name: Upgrade packages
+    - name: Upgrade Host Packages
+      become: yes
       apt:
         name: "*"
         state: latest
+        update_cache: yes
+
+    - name: Upgrade Containers
       become: yes
+      docker_compose:
+        project_name: wishalloy
+        pull: yes
+        remove_images: all
+        remove_orphans: True
+        definition:
+          version: "3.5"
+          services:
+            syncthing:
+              image: "linuxserver/syncthing"
+              environment:
+                PGID: "998"
+                PUID: "998"
+                UMASK: "022"
+              ports:
+                - "10.11.12.1:8384:8384"
+                - "21027:21027/udp"
+                - "22000:22000"
+              volumes:
+                - "/srv/syncthing/config:/config"
+                - "/srv/syncthing/data:/data"
+              restart: "unless-stopped"
+            unifi:
+              image: "linuxserver/unifi-controller"
+              environment:
+                PGID: "999"
+                PUID: "999"
+              ports:
+                - "3478:3478/udp"
+                - "6789:6789"
+                - "8080:8080"
+                - "8081:8081"
+                - "8443:8443"
+                - "8843:8843"
+                - "8880:8880"
+                - "10001:10001/udp"
+              volumes:
+                - "/srv/unifi/:/config"
+              restart: "unless-stopped"
+            znc:
+              image: "znc"
+              ports:
+                - "6697:6697"
+              volumes:
+                - "/srv/znc/:/znc-data"
+              restart: "unless-stopped"
+
+    - name: Reboot if Required
+      become: yes
+      command:
+        cmd: systemctl reboot
+        removes: /var/run/reboot-required
+
+    - name: Wait for Reboot to Complete
+      wait_for_connection:
+
+    - name: APT Housekeeping
+      become: yes
+      apt:
+          autoclean: yes
+          autoremove: yes
+
+    - name: Docker Housekeeping
+      become: yes
+      docker_prune:
+        #builder_cache: yes # Requires Docker API
+        containers: yes
+        images: yes
+        networks: yes
+        volumes: yes
 
 # vim: et sw=2 ts=2
