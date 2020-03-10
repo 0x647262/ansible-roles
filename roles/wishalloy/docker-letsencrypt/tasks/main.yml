@@ -1,0 +1,19 @@
+- name: Deploy NGINX + Let's Encrypt Container
+  become: yes
+  docker_container:
+    name: nginx-letsencrypt
+    pull: yes
+    image: "linuxserver/letsencrypt"
+    capabilities:
+      - NET_ADMIN
+    env:
+      URL: "wishalloy.com"
+      SUBDOMAINS: "wildcard"
+      VALIDATION: "dns"
+      DNSPLUGIN: "digitalocean"
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - "letsencrypt-config:/config"
+    restart_policy: "unless-stopped"

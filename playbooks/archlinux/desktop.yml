@@ -1,0 +1,17 @@
+- import_playbook: core.yml
+
+- hosts: localhost
+  connection: local
+  become: yes
+  roles:
+    - role: archlinux/code
+      tags:
+        - text editors
+    - role: archlinux/chromium
+      tags:
+        - internet browsers
+    - role: archlinux/firefox
+      tags:
+        - internet browsers
+
+# vim: et sw=2 ts=2

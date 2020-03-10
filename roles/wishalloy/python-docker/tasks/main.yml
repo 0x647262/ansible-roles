@@ -1,0 +1,6 @@
+- name: Install python-docker
+  become: yes
+  apt:
+    name: "python-docker"
+    state: present
+    update_cache: yes

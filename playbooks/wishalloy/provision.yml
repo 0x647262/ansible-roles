@@ -1,0 +1,11 @@
+- hosts: wishalloy.com
+  tasks:
+    - name: Upgrade Containers
+      # Role dependency deduplication:
+      #
+      #     https://github.com/ansible/ansible/issues/56046
+      #
+      include_role:
+        name: wishalloy/default-containers
+      tags:
+        - containers

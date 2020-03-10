@@ -1,0 +1,5 @@
+dependencies:
+  - include_role:
+    name: wishalloy/docker.io
+  - include_role:
+    name: wishalloy/python-docker

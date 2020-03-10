@@ -1,0 +1,24 @@
+- import_playbook: bootstrap.yml
+
+- hosts: localhost
+  roles:
+    - role: archlinux/base-devel
+    - role: archlinux/chezmoi
+    - role: archlinux/docker
+    - role: archlinux/etckeeper
+    - role: archlinux/fwupd
+      when:
+        - ansible_facts['virtualization_role'] == "host"
+    - role: archlinux/haveged
+    - role: archlinux/jq
+    - role: archlinux/linux-lts
+    #- role: makepkg # TODO: Does not exist
+    - role: archlinux/neovim
+    - role: archlinux/nmap
+    - role: archlinux/openvpn
+    #- role: pacman # TODO: Does not exist
+    - role: archlinux/pkgstats
+    - role: archlinux/vim
+    - role: archlinux/wireguard-arch
+    - role: archlinux/wireguard-lts
+    - role: archlinux/wireguard-tools

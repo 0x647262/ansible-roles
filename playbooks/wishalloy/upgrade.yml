@@ -1,0 +1,41 @@
+- hosts: wishalloy.com
+  tasks:
+    - name: Upgrade Host Packages
+      become: yes
+      apt:
+        upgrade: yes
+        update_cache: yes
+
+    - name: Reboot if Required
+      become: yes
+      command:
+        cmd: reboot
+        removes: /var/run/reboot-required
+
+    - name: Wait for Reboot to Complete
+      wait_for_connection:
+
+    - name: Upgrade Containers
+      # Role dependency deduplication:
+      #
+      #     https://github.com/ansible/ansible/issues/56046
+      #
+      include_role:
+        name: wishalloy/default-containers
+      tags:
+        - containers
+
+    - name: APT Housekeeping
+      become: yes
+      apt:
+          autoclean: yes
+          autoremove: yes
+
+    - name: Docker Housekeeping
+      become: yes
+      docker_prune:
+        builder_cache: yes
+        containers: yes
+        images: yes
+        networks: yes
+        volumes: yes

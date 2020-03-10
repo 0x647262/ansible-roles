@@ -1,0 +1,70 @@
+- name: Configure /etc/localtime
+  # TODO: symlink /etc/localtime
+  debug:
+    msg: "Unimplemented!"
+
+- name: Configure hardware clock
+  debug:
+    msg: "Unimplemented!"
+  # TODO: hwclock --systohc
+
+- name: Configure /etc/locale.gen
+  debug:
+    msg: "Unimplemented!"
+  # TODO: Use variables to set locales in /etc/locale.gen
+
+- name: Run locale-gen
+  debug:
+    msg: "Unimplemented!"
+  # TODO: Run locale-gen
+
+- name: Configure /etc/locale.conf
+  debug:
+    msg: "Unimplemented!"
+  # TODO: Set the LANG variable in /etc/locale.conf
+
+- name: Configure /etc/vconsole.conf
+  debug:
+    msg: "Unimplemented!"
+  # TODO: Set the KEYMAP variable in /etc/vconsole.conf
+
+- name: Configure hostname
+  debug:
+    msg: "Unimplemented!"
+  # TODO: Set a hostname
+
+- name: Configure /etc/hosts
+  debug:
+    msg: "Unimplemented!"
+  # TODO: Configure hosts entries
+
+- name: Configure networking
+  debug:
+    msg: "Unimplemented!"
+  # TODO: Configure network for next boot
+
+- name: Configure /etc/mkinitcpio.conf
+  debug:
+    msg: "Unimplemented!"
+  # TODO: Determine options for /etc/mkinitcpio.conf
+
+- name: Generate updated initramfs
+  debug:
+    msg: "Unimplemented!"
+  # TODO: Re-run mkinitcpio if /etc/mkinitcpio.conf was changed
+
+- name: Set the root password
+  debug:
+    msg: "Unimplemented!"
+  # TODO: I personally run paswordless root on all my systems (users must
+  # invoke sudo to elevate their privileges) is this worth being left
+  # unconfigured?
+
+- name: Configure the boot loader
+  debug:
+    msg: "Unimplemented!"
+  # TODO: systemd-boot (EFI)
+  # TODO: Grub (BIOS)
+  # TODO: Move LUKS configuration here (as opposed to crypttab.initramfs)
+
+# TODO: Enable trim?
