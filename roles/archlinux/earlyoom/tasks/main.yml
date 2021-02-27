@@ -1,0 +1,16 @@
+- name: Install earlyoom
+  pacman:
+    name: earlyoom
+    state: present
+
+- name: Enable earlyoom service
+  service:
+    name: earlyoom
+    enabled: yes
+
+- name: Start earlyoom service
+  service:
+    name: earlyoom
+    state: started
+
+# vim: et sw=2 ts=2:

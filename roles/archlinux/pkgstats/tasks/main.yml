@@ -3,5 +3,14 @@
     name: pkgstats
     state: present
 
-# TODO: Configure service
-# TODO: Enable service
+- name: Enable pkgstats service
+  service:
+    name: pkgstats
+    enabled: yes
+
+- name: Start pkgstats service
+  service:
+    name: pkgstats
+    state: started
+
+# vim: et sw=2 ts=2:
