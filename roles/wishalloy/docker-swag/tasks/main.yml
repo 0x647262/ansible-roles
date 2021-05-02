@@ -3,7 +3,7 @@
   docker_container:
     name: nginx-letsencrypt
     pull: yes
-    image: "linuxserver/letsencrypt"
+    image: "linuxserver/swag"
     capabilities:
       - NET_ADMIN
     env:

@@ -1,5 +1,5 @@
 - include_role:
-    name: wishalloy/docker-letsencrypt
+    name: wishalloy/docker-swag
 
 - include_role:
     name: wishalloy/docker-unifi
