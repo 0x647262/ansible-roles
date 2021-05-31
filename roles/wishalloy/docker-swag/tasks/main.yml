@@ -6,6 +6,7 @@
     image: "linuxserver/swag"
     capabilities:
       - NET_ADMIN
+    container_default_behavior: "compatibility"
     env:
       URL: "wishalloy.com"
       SUBDOMAINS: "wildcard"
